@@ -1,10 +1,11 @@
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+//Exercicio Num° 1
 public class SimuladorCaixaEletronico {
     public static void main(String[] args){
         var scanner = new Scanner(System.in);
-        BigDecimal saldo = new BigDecimal("00.00");
+        double saldo = 0.0;
         int saquesFeitos = 0;
         int opc = 9;
         double valorSaque = 0.0;
@@ -28,7 +29,7 @@ public class SimuladorCaixaEletronico {
                     case 2:
                         System.out.println("Digite o valor do deposito: ");
                         valorDeposito = scanner.nextDouble();
-                        saldo = depositar(new BigDecimal(valorDeposito), saldo);
+                        saldo = depositar(valorDeposito, saldo);
                         verSaldo(saldo);
                         valorDeposito = 0.0;
                         break;
@@ -37,8 +38,8 @@ public class SimuladorCaixaEletronico {
                         valorSaque = scanner.nextDouble();
                         if(!(saquesFeitos >= 3)) {
                             if (!(valorSaque > LIMITE_SAQUE)) {
-                                if(valorSaque < saldo.doubleValue()) {
-                                    saldo = sacar(new BigDecimal(valorSaque), saldo);
+                                if(valorSaque < saldo) {
+                                    saldo = sacar(valorSaque, saldo);
                                     saquesFeitos++;
                                 } else
                                     System.out.println("Saldo insuficiente");
@@ -58,15 +59,15 @@ public class SimuladorCaixaEletronico {
 
     }
 
-    public static BigDecimal depositar(BigDecimal valor, BigDecimal saldo){
-        return saldo.add(valor);
+    public static double depositar(double valor, double saldo){
+        return saldo + valor;
     }
 
-    public static BigDecimal sacar(BigDecimal valor, BigDecimal saldo){
-        return saldo.subtract(valor);
+    public static double sacar(double valor, double saldo){
+        return saldo - valor;
     }
 
-    public static void verSaldo(BigDecimal saldo){
+    public static void verSaldo(double saldo){
         System.out.println("====== SALDO DA CONTA ======");
         System.out.println(saldo);
         System.out.println();
