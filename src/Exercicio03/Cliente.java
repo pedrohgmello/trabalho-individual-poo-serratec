@@ -1,10 +1,13 @@
 package Exercicio03;
 
 
+import java.util.List;
+
 public class Cliente {
     private String nome;
     private String cpf;
     private String email;
+    private List<Pedido> pedidos;
 
     public Cliente(String nome, String cpf, String email) {
         this.nome = nome;
@@ -34,5 +37,13 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }

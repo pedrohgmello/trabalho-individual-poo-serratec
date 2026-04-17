@@ -14,6 +14,7 @@ public class EcommerceMain {
         item2.setNome("Porta Retratos");
         item2.setPreco(new BigDecimal("24.00"));
         Pedido pedido = new Pedido();
+        cliente.setPedidos(List.of(pedido));
         List<ItemPedido> lista = new ArrayList<>();
         lista.add(item1);
         lista.add(item2);
